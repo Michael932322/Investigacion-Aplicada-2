@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 const router = express.Router();
-const SECRET_KEY = 'your_secret_key'; // Cambia esto a una clave segura
+const SECRET_KEY = '1234'; // clave de prueba
 
 router.post('/register', async (req, res) => {
   try {
