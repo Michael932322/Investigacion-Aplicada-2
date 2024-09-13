@@ -1,25 +1,14 @@
 const express = require('express');
-const connectDB = require('./config/db');
-const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
-
-// Cargar variables de entorno
-dotenv.config();
-
-// Conectar a la base de datos
-connectDB();
+const mongoose = require('mongoose');
+const authRoutes = require('./routes/auth');
 
 const app = express();
-
-// Middleware para parsear el cuerpo de las peticiones
 app.use(bodyParser.json());
+app.use('/api', authRoutes);
 
-// Rutas de autenticación
-app.use('/api/auth', require('./routes/authRoutes'));
+mongoose.connect(process.env.MONGO_URI);
 
-// Puerto
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
 });
