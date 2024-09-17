@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
 require('dotenv').config();
+
 //Inicialización de la aplicación Express
 const app = express();
 app.use(bodyParser.json());
